@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7f8fa" />
+  <meta name="description" content="Mohammed Adil — Backend Developer building reliable backend systems and microservices." />
+  <title>Mohammed Adil | Backend Developer</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #e7eaf0;
+      --accent: #3157a4;
+      --accent-soft: #edf2fb;
+      --radius: 16px;
+      --width: 1040px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .wrap { width: min(var(--width), calc(100% - 44px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(247,248,250,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(231,234,240,.9);
+    }
+    .nav {
+      min-height: 72px; display: flex; align-items: center;
+      justify-content: space-between; gap: 24px;
+    }
+    .brand {
+      text-decoration: none; font-weight: 750; letter-spacing: -.04em;
+      font-size: 1.05rem;
+    }
+    .brand span { color: var(--accent); }
+    .navlinks { display: flex; align-items: center; gap: 26px; }
+    .navlinks a {
+      color: var(--muted); text-decoration: none; font-size: .9rem;
+      transition: color .2s ease;
+    }
+    .navlinks a:hover, .navlinks a.active { color: var(--accent); }
+
+    .hero {
+      padding: 112px 0 92px;
+      display: grid; grid-template-columns: minmax(0, 1fr) 270px;
+      align-items: center; gap: 64px;
+      border-bottom: 1px solid var(--line);
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      color: var(--accent); font-size: .78rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .eyebrow::before {
+      content: ""; width: 22px; height: 1px; background: var(--accent);
+    }
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 4.8rem); line-height: 1.04;
+      letter-spacing: -.065em; margin: 0 0 18px; font-weight: 760;
+    }
+    .hero-role {
+      color: var(--accent); font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-weight: 600; letter-spacing: -.025em; margin-bottom: 20px;
+    }
+    .intro {
+      max-width: 660px; color: var(--muted); font-size: 1.05rem;
+      margin: 0;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 46px; padding: 0 19px; border-radius: 9px;
+      text-decoration: none; font-size: .9rem; font-weight: 650;
+      border: 1px solid var(--line); transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    .button:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(23,32,51,.08); }
+    .button.primary { background: var(--ink); color: white; border-color: var(--ink); }
+    .button.secondary { background: white; color: var(--ink); }
+
+    .hero-card {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 20px; padding: 25px; box-shadow: 0 14px 40px rgba(23,32,51,.045);
+    }
+    .monogram {
+      width: 62px; height: 62px; display: grid; place-items: center;
+      border-radius: 17px; background: var(--accent-soft); color: var(--accent);
+      font-size: 1.35rem; font-weight: 800; letter-spacing: -.06em; margin-bottom: 25px;
+    }
+    .hero-card-label { color: var(--muted); font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; }
+    .hero-card strong { display: block; font-size: 1.05rem; margin: 5px 0 18px; }
+    .hero-card strong:last-child { margin-bottom: 0; }
+    .availability { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: .83rem; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: #3b9b70; }
+
+    section { padding: 78px 0 0; }
+    .section-head { margin-bottom: 27px; }
+    .kicker {
+      color: var(--accent); font-size: .75rem; font-weight: 750;
+      letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px;
+    }
+    h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); letter-spacing: -.045em; line-height: 1.2; margin: 0; }
+    .section-intro { color: var(--muted); max-width: 680px; margin: 12px 0 0; }
+
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 22px; }
+    .panel, .skill-group, .project, .experience-item {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    }
+    .panel { padding: 27px; }
+    .panel p { color: var(--muted); margin: 0; }
+    .facts { display: grid; gap: 17px; }
+    .fact-label { color: var(--muted); font-size: .78rem; display: block; margin-bottom: 3px; }
+    .fact-value { font-weight: 650; }
+
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .skill-group { padding: 22px; transition: transform .22s ease, box-shadow .22s ease; }
+    .skill-group:hover, .project:hover, .experience-item:hover {
+      transform: translateY(-3px); box-shadow: 0 12px 28px rgba(23,32,51,.06);
+    }
+    .skill-group h3 { font-size: .96rem; margin: 0 0 13px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      background: #f5f6f8; color: #475467; border: 1px solid #edf0f4;
+      border-radius: 7px; padding: 5px 9px; font-size: .78rem;
+    }
+
+    .timeline { display: grid; gap: 16px; }
+    .experience-item { padding: 25px 27px; transition: transform .22s ease, box-shadow .22s ease; }
+    .exp-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
+    .exp-title { font-size: 1.08rem; font-weight: 720; }
+    .company { color: var(--accent); font-weight: 650; margin-top: 3px; }
+    .date { color: var(--muted); font-size: .82rem; white-space: nowrap; }
+    .experience-item ul { color: var(--muted); padding-left: 19px; margin: 17px 0 0; }
+    .experience-item li { margin: 7px 0; }
+    li::marker { color: var(--accent); }
+
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .project { padding: 25px; transition: transform .22s ease, box-shadow .22s ease; }
+    .project-number { color: var(--accent); font-size: .78rem; font-weight: 750; letter-spacing: .08em; }
+    .project h3 { margin: 13px 0 8px; font-size: 1.12rem; letter-spacing: -.02em; }
+    .project p { color: var(--muted); font-size: .92rem; margin: 0 0 18px; }
+    .project .tags { margin-top: auto; }
+
+    .education-card {
+      display: flex; justify-content: space-between; align-items: center; gap: 20px;
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 25px 27px;
+    }
+    .education-card h3 { margin: 0; font-size: 1.02rem; }
+    .education-card p { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
+    .grade { color: var(--accent); font-weight: 700; white-space: nowrap; }
+
+    .contact {
+      background: var(--ink); color: white; border-radius: 20px;
+      padding: 38px; display: flex; justify-content: space-between;
+      align-items: center; gap: 28px;
+    }
+    .contact .kicker { color: #a9c0f1; }
+    .contact p { color: #c2cad8; margin: 10px 0 0; max-width: 520px; }
+    .contact .button { background: white; color: var(--ink); border-color: white; white-space: nowrap; }
+
+    footer {
+      padding: 30px 0 38px; margin-top: 64px; border-top: 1px solid var(--line);
+      display: flex; justify-content: space-between; gap: 20px;
+      color: var(--muted); font-size: .83rem;
+    }
+    .footer-links { display: flex; gap: 18px; }
+    .footer-links a { text-decoration: none; }
+    .footer-links a:hover { color: var(--accent); }
+
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 760px) {
+      .hero { grid-template-columns: 1fr; gap: 30px; padding: 76px 0 60px; }
+      .hero-card { max-width: 420px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav { align-items: flex-start; flex-direction: column; padding: 15px 0; gap: 10px; }
+      .navlinks { width: 100%; gap: 18px; overflow-x: auto; padding-bottom: 3px; }
+      .navlinks a { white-space: nowrap; font-size: .84rem; }
+      section { padding-top: 60px; }
+    }
+    @media (max-width: 520px) {
+      .wrap { width: min(100% - 32px, var(--width)); }
+      .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+      .exp-top, .education-card, .contact, footer { flex-direction: column; align-items: flex-start; }
+      .date { white-space: normal; }
+      .contact { padding: 28px; }
+      footer { gap: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="#home">Mohammed<span>Adil.</span></a>
+      <div class="navlinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+
+  <main class="wrap">
+    <header class="hero" id="home">
+      <div class="reveal">
+        <div class="eyebrow">Backend Developer</div>
+        <h1>Mohammed Adil</h1>
+        <div class="hero-role">Building reliable backend systems.</div>
+        <p class="intro">
+          Backend developer experienced in building Java-based microservices, REST APIs
+          and event-driven applications. I work with Spring Boot, Quarkus, Kafka and AWS,
+          with experience across trading and telecom platforms.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="#projects">Explore my work</a>
+          <a class="button secondary" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <aside class="hero-card reveal" aria-label="Professional summary">
+        <div class="monogram">MA</div>
+        <div class="hero-card-label">Focus</div>
+        <strong>Backend engineering</strong>
+        <div class="hero-card-label">Core stack</div>
+        <strong>Java · Spring Boot · Quarkus</strong>
+        <div class="availability"><span class="dot"></span> Open to meaningful opportunities</div>
+      </aside>
+    </header>
+
+    <section id="about" class="reveal">
+      <div class="section-head">
+        <div class="kicker">A little about me</div>
+        <h2>Engineering with purpose.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="panel">
+          <p>
+            I enjoy solving backend problems and building services that are reliable,
+            maintainable and practical. My experience includes API development,
+            authentication and authorization, messaging, database integrations,
+            containerization and application monitoring.
+          </p>
+        </div>
+        <div class="panel facts">
+          <div><span class="fact-label">Primary language</span><span class="fact-value">Java</span></div>
+          <div><span class="fact-label">Backend</span><span class="fact-value">Spring Boot &amp; Quarkus</span></div>
+          <div><span class="fact-label">Architecture</span><span class="fact-value">Microservices &amp; event-driven systems</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="reveal">
+      <div class="section-head">
+        <div class="kicker">What I work with</div>
+        <h2>Technical skills</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group"><h3>Backend development</h3><div class="tags"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Quarkus</span><span class="tag">REST APIs</span><span class="tag">Hibernate</span><span class="tag">Microservices</span></div></div>
+        <div class="skill-group"><h3>Messaging &amp; cloud</h3><div class="tags"><span class="tag">Apache Kafka</span><span class="tag">AWS Cognito</span><span class="tag">AWS Lambda</span><span class="tag">SES</span><span class="tag">SNS</span></div></div>
+        <div class="skill-group"><h3>Databases &amp; storage</h3><div class="tags"><span class="tag">MySQL</span><span class="tag">Oracle</span><span class="tag">MinIO</span><span class="tag">SQL</span></div></div>
+        <div class="skill-group"><h3>Security</h3><div class="tags"><span class="tag">OAuth</span><span class="tag">JWT</span><span class="tag">RBAC</span></div></div>
+        <div class="skill-group"><h3>DevOps &amp; deployment</h3><div class="tags"><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">GitLab CI/CD</span><span class="tag">Linux</span></div></div>
+        <div class="skill-group"><h3>Monitoring</h3><div class="tags"><span class="tag">Prometheus</span><span class="tag">Grafana</span></div></div>
+      </div>
+    </section>
+
+    <section id="experience" class="reveal">
+      <div class="section-head">
+        <div class="kicker">Where I've worked</div>
+        <h2>Experience</h2>
+      </div>
+      <div class="timeline">
+        <article class="experience-item">
+          <div class="exp-top">
+            <div><div class="exp-title">Software Developer</div><div class="company">SMART TOUCH INFOTECH PRIVATE LIMITED</div></div>
+            <div class="date">Hybrid · September 2025 – Present</div>
+          </div>
+          <ul>
+            <li>Develop backend services and REST APIs using Java, Spring Boot and Quarkus.</li>
+            <li>Work on authentication flows using AWS Cognito, Google OAuth, JWT and role-based access control.</li>
+            <li>Integrate messaging and notification workflows, and build event-driven services with Apache Kafka.</li>
+            <li>Contribute to automated trading capabilities, including strategy execution, order workflows and broker integrations.</li>
+            <li>Use Docker, Prometheus and Grafana for deployment support and application observability.</li>
+          </ul>
+        </article>
+        <article class="experience-item">
+          <div class="exp-top">
+            <div><div class="exp-title">Software Developer</div><div class="company">AlgolSoft</div></div>
+            <div class="date">Hybrid · May 2024 – August 2025</div>
+          </div>
+          <ul>
+            <li>Built Java and Spring Boot backend services for telecom asset and resource management.</li>
+            <li>Developed file-processing workflows and worked with MySQL, Oracle and MinIO integrations.</li>
+            <li>Containerized applications with Docker, supported Kubernetes deployments and GitLab CI/CD pipelines.</li>
+            <li>Contributed to backend modules for a WhatsApp-based ordering platform, including cart, order and stock workflows.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="reveal">
+      <div class="section-head">
+        <div class="kicker">Selected work</div>
+        <h2>Projects &amp; domains</h2>
+        <p class="section-intro">A few areas I've contributed to through my professional work.</p>
+      </div>
+      <div class="projects-grid">
+        <article class="project">
+          <div class="project-number">01 / TRADING</div>
+          <h3>Zenxo — Trading &amp; Backtesting Platform</h3>
+          <p>Backend development across strategy workflows, authentication, event-driven services and automated trading capabilities.</p>
+          <div class="tags"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Quarkus</span><span class="tag">Kafka</span></div>
+        </article>
+        <article class="project">
+          <div class="project-number">02 / TELECOM</div>
+          <h3>Telecom Asset &amp; Resource Management</h3>
+          <p>Backend services and file-processing workflows supporting telecom asset and resource management.</p>
+          <div class="tags"><span class="tag">Spring Boot</span><span class="tag">MySQL</span><span class="tag">Oracle</span><span class="tag">MinIO</span></div>
+        </article>
+        <article class="project">
+          <div class="project-number">03 / E-COMMERCE</div>
+          <h3>WhatsApp-based Ordering Platform</h3>
+          <p>Backend modules for product, cart and order management, including message parsing and order validation.</p>
+          <div class="tags"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">REST APIs</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="education" class="reveal">
+      <div class="section-head">
+        <div class="kicker">Academic background</div>
+        <h2>Education</h2>
+      </div>
+      <div class="education-card">
+        <div><h3>B.Tech in Computer Engineering</h3><p>APJ Abdul Kalam Technological University · 2019–2023</p></div>
+        <div class="grade">CGPA: 7.4</div>
+      </div>
+    </section>
+
+    <section id="contact" class="reveal">
+      <div class="contact">
+        <div>
+          <div class="kicker">Have a project or opportunity?</div>
+          <h2>Let's connect.</h2>
+          <p>I'm always happy to connect about backend engineering, interesting technical challenges and opportunities to build useful systems.</p>
+        </div>
+        <!-- Replace the email address below with your real email. -->
+        <a class="button" href="mailto:your.email@example.com">Email me ↗</a>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Mohammed Adil</div>
+      <div class="footer-links">
+        <!-- Replace these placeholder URLs with your real profiles. -->
+        <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const revealItems = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries, currentObserver) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            currentObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add("visible"));
+    }
+
+    const sections = document.querySelectorAll("main section[id]");
+    const navLinks = document.querySelectorAll(".navlinks a");
+    if ("IntersectionObserver" in window) {
+      const navObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navLinks.forEach(link => {
+              link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id);
+            });
+          }
+        });
+      }, { rootMargin: "-35% 0px -55% 0px" });
+      sections.forEach(section => navObserver.observe(section));
+    }
+  </script>
+</body>
+</html>
